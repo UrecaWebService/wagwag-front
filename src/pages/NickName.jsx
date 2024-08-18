@@ -1,8 +1,48 @@
 import settingBg from "../assets/settingBg.png";
 import profile from "../assets/profile.jpg";
 import logoImage from "../assets/wagwagLogo.png";
+import { useEffect, useState } from "react";
 
 const NickName = () => {
+  const [text, setText] = useState("");
+  const [message, setMessage] = useState("");
+  const nicknames = ["하이", "닉네임", "여행중", "hi"]; // 닉네임 더미데이터
+
+  useEffect(() => {
+    // 특수문자를 검사하는 정규 표현식
+    const specialCharacterRegex =
+      /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+
+    if (!text.length) {
+      setMessage("");
+    } else if (text.length > 0 && text.length < 2) {
+      setMessage(
+        <>
+          <span className="text-[#FF7777]">* 2 글자 이상의 </span>
+          닉네임으로 정해주세요
+        </>
+      );
+    } else if (specialCharacterRegex.test(text)) {
+      setMessage(
+        <>
+          <span className="text-[#FF7777]">* 특수문자</span>는 제거해주세요
+        </>
+      );
+    } else if (nicknames.includes(text)) {
+      setMessage(
+        <>
+          <span className="text-[#FF7777]">* 이미 사용 중</span>인 닉네임입니다
+        </>
+      );
+    } else {
+      setMessage(
+        <>
+          <span className="text-[#57F98E]">* 사용가능한 </span>
+          닉네임입니다
+        </>
+      );
+    }
+  }, [text]);
   return (
     <>
       <div className="absolute top-2 left-2">
@@ -28,11 +68,17 @@ const NickName = () => {
               backgroundPosition: "center",
             }}
           ></div>
-          <input
-            type="text"
-            placeholder="닉네임을 입력하세요"
-            className="w-64 h-12 px-3 py-3 rounded-lg bg-transparent border-2 border-[#5E5E5E] text-white placeholder-[#5E5E5E]"
-          />
+          <div className="w-64">
+            <input
+              type="text"
+              placeholder="닉네임을 입력하세요"
+              className="w-64 h-12 px-3 py-3 rounded-lg bg-transparent border-2 border-[#5E5E5E] text-white placeholder-[#5E5E5E]"
+              onChange={(e) => setText(e.target.value)}
+            />
+            {message && (
+              <div className="text-[#898989] text-left mt-2">{message}</div>
+            )}
+          </div>
           <button
             type="submit"
             className="bg-slate-50 w-24 h-12 rounded-lg border border-white mt-8 font-semibold cursor-pointer hover:bg-slate-700 hover:text-white"
