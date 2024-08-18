@@ -1,4 +1,4 @@
-
+import settingBg from "../assets/settingBg.png";
 
 const BasicSettingCategory = () => {
     return (
