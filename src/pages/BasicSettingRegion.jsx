@@ -150,7 +150,7 @@ const BasicSettingRegion = () => {
                         <div className="text-gray-400 mb-12 font-bold text-xl">동 · 읍 · 면</div>
 
                         {selectedProvince && (
-                            <div className="grid grid-cols-3 gap-2 h-40 overflow-y-auto">
+                            <div className="grid grid-cols-3 gap-2 h-40 overflow-y-auto selectionScrollBar">
                                 {regionData.find((region) => region.province === selectedProvince)?.town.map((town) => (
                                     <button
                                         key={town}
@@ -162,8 +162,6 @@ const BasicSettingRegion = () => {
                                     </button>
                                 ))}
                             </div>
-
-
                         )}
                     </div>
                 </div>
