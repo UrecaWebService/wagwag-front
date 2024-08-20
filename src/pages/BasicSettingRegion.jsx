@@ -109,12 +109,7 @@ const BasicSettingRegion = () => {
 
     return (
         <div
-            className="h-screen w-screen relative"
-            style={{
-                backgroundImage: `url(${settingBg})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-            }}
+
         >
             <div className="flex flex-col items-center justify-center min-h-screen text-white">
                 {/* Title */}
@@ -146,7 +141,7 @@ const BasicSettingRegion = () => {
                         </div>
                     </div>
 
-                    <div className="flex-6 w-2/6">
+                    <div className="flex-2 w-2/6">
                         <div className="text-gray-400 mb-12 font-bold text-xl">동 · 읍 · 면</div>
 
                         {selectedProvince && (
