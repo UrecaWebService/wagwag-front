@@ -7,9 +7,10 @@ const BasicSettingRegion = () => {
     const regionData = [
         {
             id: 1,
-            province: '강남구',
-            town: ['개포동', '논현동', '대치동', '도곡동', '역삼동']
+            province: "강남구",
+            town: ["개포동", "논현동", "대치동", "도곡동", "삼성동", "세곡동", "수서동", "신사동", "압구정동", "역삼동", "일원동", "자곡동", "청담동"]
         },
+
         {
             id: 2,
             province: '강북구',
@@ -120,13 +121,13 @@ const BasicSettingRegion = () => {
                 {/* Title */}
                 <div className="mb-6 text-center">
                     <h1 className="text-2xl font-bold"><span className="italic">waggle</span> 님의 지역을 설정해 주세요</h1>
-                    <p className="text-sm text-gray-500"><span className="text-sm text-green-400">* 내 지역</span>을 기반으로 와글을 볼 수 있어요</p>
+                    <p className="text-sm text-gray-500"><span className="text-sm text-secondary">* 내 지역</span>을 기반으로 와글을 볼 수 있어요</p>
                 </div>
 
                 <div className="flex justify-between p-2 rounded-lg w-[100%] max-w-7xl h-80">
                     <div className="flex-[0.4] pr-4 border-r border-gray-500">
                         <div className="text-gray-400 mb-2 text-xl">시·도</div>
-                        <div className="mt-14 bg-transparent text-white py-2 text-2xl hover:text-green-500">서울</div>
+                        <div className="mt-14 bg-transparent text-white py-2 text-2xl hover:text-secondary">서울</div>
                     </div>
 
                     <div className="flex-8 w-3/7 pr-3">
@@ -137,7 +138,7 @@ const BasicSettingRegion = () => {
                                     <button
                                         key={index}
                                         onClick={() => handleProvinceClick(actualProvinces.province)}  // Handle province click
-                                        className="mx-3 mb-2 px-9 py-4 rounded-full border-2 border-transparent hover:text-green-500 focus:text-green-500 active:text-green-500 focus:border-green-500 active:border-green-500 focus:font-semibold active:font-semibold text-white text-xl transition-all duration-200"
+                                        className="mx-3 mb-2 px-9 py-4 rounded-full border-2 border-transparent hover:text-secondary focus:text-secondary active:text-secondary focus:border-secondary active:border-secondary focus:font-semibold active:font-semibold text-white text-xl transition-all duration-200"
                                     >
                                         {actualProvinces.province}
                                     </button>
@@ -155,7 +156,7 @@ const BasicSettingRegion = () => {
                                     <button
                                         key={town}
                                         onClick={() => handleTownClick(town)}
-                                        className="mx-3 mb-2 hover:text-green-500 focus:text-green-500 active:text-green-500 text-white text-xl flex items-center transition-all duration-200"
+                                        className="mx-3 mb-2 hover:text-secondary focus:text-secondary active:text-secondary text-white text-xl flex items-center transition-all duration-200"
                                     >
                                         <span>{town}</span>
                                         <span className="ml-1 w-6">{selectedTown === town && <CheckIcon/>}</span>
