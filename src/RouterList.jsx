@@ -1,56 +1,84 @@
-import Layout from "./Layout.jsx";
+import Layout from "./components/Layout.jsx";
 import Login from "./pages/Login.jsx";
-import {createBrowserRouter, Navigate} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import BasicSettingRegion from "./pages/BasicSettingRegion.jsx";
 import NickName from "./pages/NickName.jsx";
 import BasicSettingCategory from "./pages/BasicSettingCategory.jsx";
 import WrongPath from "./pages/WrongPath.jsx";
+import WagUser from "./pages/WagUser.jsx";
+import WagMain from "./pages/WagMain.jsx";
+import UserUploadedList from "./pages/UserUploadedList.jsx";
+import UserLayout from "./components/UserLayout.jsx";
+import UserLikeList from "./pages/UserLikeList.jsx";
 
-// Define the RouterList as a function for modularity
 export const RouterList = () => [
   {
     path: "/",
     element: <Layout />,
     children: [
       {
-        index: true,
         path: "login",
         element: <Login />,
       },
       {
-        path: "/intro",
+        path: "intro",
         children: [
-            //경로예외처리 1
           {
             index: true,
-            element: <Navigate to="/intro/login" replace />,
-          },
-          {
-            path: "region",
-            element: <BasicSettingRegion />,
+            element: <WrongPath />,
           },
           {
             path: "nickname",
             element: <NickName />,
           },
           {
+            path: "region",
+            element: <BasicSettingRegion />,
+          },
+          {
             path: "category",
             element: <BasicSettingCategory />,
           },
-            //경로 예외처리 2
           {
             path: "*",
-            element: <WrongPath/>, // Fallback for invalid paths under /intro
+            element: <WrongPath />,
           },
         ],
       },
       {
-        path: "/main",
-        element: <BasicSettingCategory />,
+        //메인페이지
+        path: "main",
+        element: <WagMain />,
       },
       {
-        path: "/user",
-        element: <BasicSettingCategory />,
+        //마이페이지 라우터
+        path: "user",
+        element: <UserLayout />,
+        children: [
+          {
+            index: true,
+            element: <WrongPath />,
+          },
+          {
+            //마이페이지
+            path: "main",
+            element: <WagUser />,
+          },
+          {
+            //마이페이지 업로드한 동영상 더보기
+            path: "uploaded",
+            element: <UserUploadedList />,
+          },
+          {
+            //마이페이지 좋와요를 누른 동영상 더보기
+            path: "uploaded",
+            element: <UserLikeList />,
+          },
+        ],
+      },
+      {
+        path: "*",
+        element: <WrongPath />,
       },
     ],
   },
