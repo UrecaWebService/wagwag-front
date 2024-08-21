@@ -44,7 +44,7 @@ const NickName = () => {
     }
   }, [text]);
   return (
-    <>
+    <div>
       <div className="absolute top-2 left-2">
         <img src={logoImage} alt="Logo" className="h-[38px] w-auto" />
       </div>
@@ -87,7 +87,7 @@ const NickName = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
