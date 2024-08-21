@@ -7,14 +7,7 @@ const Login = () => {
     return (
         <>
             {/* <div><h1 className="font-thin">로그인</h1></div> */}
-            <div
-                className="h-screen w-screen relative"
-                style={{
-                    backgroundImage: `url(${settingBg})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                }
-                }>
+            <div>
                 <div className='relative flex flex-col items-center font-sans'>
                     <button
                         type="submit"

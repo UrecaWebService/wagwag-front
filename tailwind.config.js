@@ -23,7 +23,7 @@ export default {
         '2xl': '',
       },
       backgroundImage: {
-        setting: 'url("./assets/settingBg.png")'
+        setting: 'url("./assets/qqq.png")'
       },
       logoImage: {
         wagwaglogo: 'url("./assets/wagwaglogo.png")'

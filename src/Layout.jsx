@@ -5,15 +5,20 @@ import settingBg from "./assets/settingBg.png";
 
 
 const Layout = () => {
+
+
+
     return (
-        <div className="h-screen w-screen relative"
+        <div
+            className="h-screen w-screen flex flex-col items-center justify-center relative"
             style={{
                 backgroundImage: `url(${settingBg})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
-            }}>
-            {/*<div><h1 className="flex text-white">This is LOGO</h1></div>*/}
-            <Outlet />
+            }}
+        >
+            <Outlet/>
+            <button/>
         </div>
     )
 }

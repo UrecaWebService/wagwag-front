@@ -102,38 +102,44 @@ const BasicSettingRegion = () => {
 
     const CheckIcon = () => {
         return (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="rgba(34, 197, 94, 1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 24 24" fill="rgba(34, 197, 94, 1)">
                 <path d="M10 15.586L6.707 12.293 5.293 13.707 10 18.414 19.707 8.707 18.293 7.293z"></path>
             </svg>
         );
     };
 
-    return (
-        <div
 
-        >
+    return (
+        <div className="h-screen w-screen relative"
+             style={{
+                 backgroundImage: `url(${settingBg})`,
+                 backgroundSize: 'cover',
+                 backgroundPosition: 'center'
+             }}>
             <div className="flex flex-col items-center justify-center min-h-screen text-white">
-                {/* Title */}
-                <div className="mb-6 text-center">
-                    <h1 className="text-2xl font-bold"><span className="italic">waggle</span> 님의 지역을 설정해 주세요</h1>
-                    <p className="text-sm text-gray-500"><span className="text-sm text-secondary">* 내 지역</span>을 기반으로 와글을 볼 수 있어요</p>
+                <div className="mt-8 mb-6 text-center">
+                    <h1 className="text-2xl font-bold mb-1"><span className="italic">waggle</span> 님의 지역을 설정해 주세요</h1>
+                    <p className="text-[19px] text-gray-500"><span className="text-[19px] text-secondary">* 내 지역</span>을
+                        기반으로 와글을 볼 수 있어요</p>
                 </div>
 
-                <div className="flex justify-between p-2 rounded-lg w-[100%] max-w-7xl h-80">
-                    <div className="flex-[0.4] pr-4 border-r border-gray-500">
+                <div className="flex justify-between mt-[30px] p-2 rounded-lg w-[100%] max-w-[1365px] h-[380px] text-[#c1c1c1]">
+                    <div className="flex-[1] mt-3 pr-4 border-r border-gray-500">
                         <div className="text-gray-400 mb-2 text-xl">시·도</div>
-                        <div className="mt-14 bg-transparent text-white py-2 text-2xl hover:text-secondary">서울</div>
+                        <div className="mt-12 bg-transparent text-white py-2 text-2xl hover:text-secondary">서울</div>
                     </div>
 
-                    <div className="flex-8 w-3/7 pr-3">
-                        <div className="pl-12 text-gray-400 mb-12 font-bold text-xl">구 · 군 · 시</div>
-                        <div className="flex justify-center ">
-                            <div className="grid grid-cols-3 gap-2 h-60 overflow-y-auto">
+                    <div className="flex-8 w-[650px] pr-16">
+                        <div className="pl-[35px] text-gray-400 mt-3 mb-9 font-bold text-xl">구 · 군 · 시</div>
+                        <div className="flex pr-11 pt-1 justify-center ">
+                            <div className="grid grid-cols-3 gap-2 h-[320px] overflow-y-auto">
                                 {regionData.map((actualProvinces, index) => (
                                     <button
                                         key={index}
-                                        onClick={() => handleProvinceClick(actualProvinces.province)}  // Handle province click
-                                        className="mx-3 mb-2 px-9 py-4 rounded-full border-2 border-transparent hover:text-secondary focus:text-secondary active:text-secondary focus:border-secondary active:border-secondary focus:font-semibold active:font-semibold text-white text-xl transition-all duration-200"
+                                        onClick={() => handleProvinceClick(actualProvinces.province)}
+                                        className={`mx-[23px] mb-[6px] px-[20px] py-[14px] rounded-full border-2 transition-all text-[23px] ${
+                                            selectedProvince === actualProvinces.province ? 'border-secondary text-secondary font-semibold' : 'border-transparent hover:text-secondary focus:text-secondary active:text-secondary'
+                                        }`}
                                     >
                                         {actualProvinces.province}
                                     </button>
@@ -142,27 +148,36 @@ const BasicSettingRegion = () => {
                         </div>
                     </div>
 
-                    <div className="flex-2 w-2/6">
-                        <div className="text-gray-400 mb-12 font-bold text-xl">동 · 읍 · 면</div>
+                    <div className="flex-2 w-[550px]">
+                        <div className="text-gray-400 mt-4 mb-8 font-bold text-xl">동 · 읍 · 면</div>
 
                         {selectedProvince && (
-                            <div className="grid grid-cols-3 gap-2 h-40 overflow-y-auto selectionScrollBar">
+                            <div
+                                className={`grid grid-cols-3 gap-2 ${regionData.find((region) => region.province === selectedProvince)?.town.length > 9 ? 'h-[320px]' : 'h-[165px]'} overflow-y-auto selectionScrollBar `}
+                            >
                                 {regionData.find((region) => region.province === selectedProvince)?.town.map((town) => (
                                     <button
                                         key={town}
                                         onClick={() => handleTownClick(town)}
-                                        className="mx-3 mb-2 hover:text-secondary focus:text-secondary active:text-secondary text-white text-xl flex items-center transition-all duration-200"
+                                        className={`mx-3 mb-2 px-2 ${
+                                            selectedTown === town ? 'text-secondary font-semibold' : 'text-[#c1c1c1]'
+                                        } ${regionData.find((region) => region.province === selectedProvince)?.town.length > 9 ? 'py-[18px]' : ''} hover:text-secondary focus:text-secondary active:text-secondary text-[23px] flex items-center transition-all`}
                                     >
                                         <span>{town}</span>
-                                        <span className="ml-1 w-6">{selectedTown === town && <CheckIcon/>}</span>
+                                        <span className="ml-1 w-[31px] relative" style={{left: '-2px', top: '-2px'}}>
+                                            {selectedTown === town && <CheckIcon/>}
+                                        </span>
                                     </button>
                                 ))}
                             </div>
                         )}
+
                     </div>
+
+
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-[82px]">
                     <button
                         className="px-8 py-3 bg-gray-200 text-black rounded-lg hover:bg-gray-300 transition">
                         확인
