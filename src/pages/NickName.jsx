@@ -18,26 +18,26 @@ const NickName = () => {
     } else if (text.length > 0 && text.length < 2) {
       setMessage(
         <>
-          <span className="text-[#FF7777]">* 2 글자 이상의 </span>
+          <span className="text-warning">* 2 글자 이상의 </span>
           닉네임으로 정해주세요
         </>
       );
     } else if (specialCharacterRegex.test(text)) {
       setMessage(
         <>
-          <span className="text-[#FF7777]">* 특수문자</span>는 제거해주세요
+          <span className="text-warning">* 특수문자</span>는 제거해주세요
         </>
       );
     } else if (nicknames.includes(text)) {
       setMessage(
         <>
-          <span className="text-[#FF7777]">* 이미 사용 중</span>인 닉네임입니다
+          <span className="text-warning">* 이미 사용 중</span>인 닉네임입니다
         </>
       );
     } else {
       setMessage(
         <>
-          <span className="text-[#57F98E]">* 사용가능한 </span>
+          <span className="text-secondary">* 사용가능한 </span>
           닉네임입니다
         </>
       );
@@ -68,9 +68,9 @@ const NickName = () => {
               className="w-64 h-12 px-3 py-3 rounded-lg bg-transparent border-2 border-[#5E5E5E] text-white placeholder-[#5E5E5E]"
               onChange={(e) => setText(e.target.value)}
             />
-            {message && (
-              <div className="text-[#898989] text-left mt-2">{message}</div>
-            )}
+            <div className="text-[#898989] text-left mt-2 h-[24px]">
+              {message}
+            </div>
           </div>
           <button
             type="submit"
