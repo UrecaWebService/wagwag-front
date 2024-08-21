@@ -1,4 +1,4 @@
-import settingBg from "../assets/settingBg.png";
+import settingBg from "../assets/aaa.png";
 import profile from "../assets/profile.jpg";
 import logoImage from "../assets/wagwagLogo.png";
 import { useEffect, useState } from "react";
@@ -48,14 +48,7 @@ const NickName = () => {
       <div className="absolute top-2 left-2">
         <img src={logoImage} alt="Logo" className="h-[38px] w-auto" />
       </div>
-      <div
-        className="h-screen w-screen flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${settingBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <div>
         <div className="w-1/2 flex flex-col items-center gap-10">
           <div className="text-white text-center text-[20px] font-semibold mb-7">
             닉네임을 설정해 주세요
