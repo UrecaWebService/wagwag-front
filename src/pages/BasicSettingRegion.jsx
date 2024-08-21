@@ -91,13 +91,11 @@ const BasicSettingRegion = () => {
     const handleProvinceClick = (province) => {
         setSelectedProvince(province);
         setSelectedTown(null); // Reset the selected town
-        console.log(`Province clicked: ${province}`);
     };
 
     const handleTownClick = (town) => {
         setSelectedTown(town);
         setUserSelection((prevSelection) => [...prevSelection, { province: selectedProvince, town }]);
-        console.log(`Town clicked: ${town}`);
     };
 
     const CheckIcon = () => {
