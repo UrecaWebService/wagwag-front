@@ -1,9 +1,10 @@
 import Layout from "./Layout.jsx";
 import Login from "./pages/Login.jsx";
-import { createBrowserRouter } from "react-router-dom";
+import {createBrowserRouter, Navigate} from "react-router-dom";
 import BasicSettingRegion from "./pages/BasicSettingRegion.jsx";
 import NickName from "./pages/NickName.jsx";
 import BasicSettingCategory from "./pages/BasicSettingCategory.jsx";
+import WrongPath from "./pages/WrongPath.jsx";
 
 // Define the RouterList as a function for modularity
 export const RouterList = () => [
@@ -13,19 +14,42 @@ export const RouterList = () => [
     children: [
       {
         index: true,
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/region",
-        element: <BasicSettingRegion />,
+        path: "/intro",
+        children: [
+            //경로예외처리 1
+          {
+            index: true,
+            element: <Navigate to="/intro/login" replace />,
+          },
+          {
+            path: "region",
+            element: <BasicSettingRegion />,
+          },
+          {
+            path: "nickname",
+            element: <NickName />,
+          },
+          {
+            path: "category",
+            element: <BasicSettingCategory />,
+          },
+            //경로 예외처리 2
+          {
+            path: "*",
+            element: <WrongPath/>, // Fallback for invalid paths under /intro
+          },
+        ],
       },
       {
-        path: "/nickname",
-        element: <NickName />,
+        path: "/main",
+        element: <BasicSettingCategory />,
       },
       {
-        path: "/category",
+        path: "/user",
         element: <BasicSettingCategory />,
       },
     ],
