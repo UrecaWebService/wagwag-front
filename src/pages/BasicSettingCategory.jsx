@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import settingBg from '../assets/settingBg.png';
+import settingBg from '../assets/bbb.png';
 import logoImage from '../assets/wagwagLogo.png';
 
 const categories = [
@@ -25,14 +25,7 @@ const BasicSettingCategory = ({ username = 'waggle' }) => {
     const isSelected = (label) => selectedButtons.includes(label);
 
     return (
-        <div
-            className="h-screen w-screen flex flex-col items-center justify-center relative"
-            style={{
-                backgroundImage: `url(${settingBg})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-            }}
-        >
+        <div>
             {/* 로고 이미지 */}
             <div className="absolute" style={{ top: '66px', left: '69px' }}>
                 <img src={logoImage} alt="Wagwag Logo" style={{ width: '177px' }} />

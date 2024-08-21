@@ -1,4 +1,4 @@
-import settingBg from "../assets/settingBg.png";
+import settingBg from "../assets/aaa.png";
 import profile from "../assets/profile.jpg";
 import logoImage from "../assets/wagwagLogo.png";
 import { useEffect, useState } from "react";
@@ -18,26 +18,26 @@ const NickName = () => {
     } else if (text.length > 0 && text.length < 2) {
       setMessage(
         <>
-          <span className="text-[#FF7777]">* 2 글자 이상의 </span>
+          <span className="text-warning">* 2 글자 이상의 </span>
           닉네임으로 정해주세요
         </>
       );
     } else if (specialCharacterRegex.test(text)) {
       setMessage(
         <>
-          <span className="text-[#FF7777]">* 특수문자</span>는 제거해주세요
+          <span className="text-warning">* 특수문자</span>는 제거해주세요
         </>
       );
     } else if (nicknames.includes(text)) {
       setMessage(
         <>
-          <span className="text-[#FF7777]">* 이미 사용 중</span>인 닉네임입니다
+          <span className="text-warning">* 이미 사용 중</span>인 닉네임입니다
         </>
       );
     } else {
       setMessage(
         <>
-          <span className="text-[#57F98E]">* 사용가능한 </span>
+          <span className="text-secondary">* 사용가능한 </span>
           닉네임입니다
         </>
       );
@@ -48,14 +48,7 @@ const NickName = () => {
       <div className="absolute top-2 left-2">
         <img src={logoImage} alt="Logo" className="h-[38px] w-auto" />
       </div>
-      <div
-        className="h-screen w-screen flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${settingBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <div>
         <div className="w-1/2 flex flex-col items-center gap-10">
           <div className="text-white text-center text-[20px] font-semibold mb-7">
             닉네임을 설정해 주세요
@@ -75,9 +68,9 @@ const NickName = () => {
               className="w-64 h-12 px-3 py-3 rounded-lg bg-transparent border-2 border-[#5E5E5E] text-white placeholder-[#5E5E5E]"
               onChange={(e) => setText(e.target.value)}
             />
-            {message && (
-              <div className="text-[#898989] text-left mt-2">{message}</div>
-            )}
+            <div className="text-[#898989] text-left mt-2 h-[24px]">
+              {message}
+            </div>
           </div>
           <button
             type="submit"
