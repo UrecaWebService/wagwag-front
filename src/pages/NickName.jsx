@@ -43,6 +43,8 @@ const NickName = () => {
       );
     }
   }, [text]);
+
+
   return (
     <div>
       <div className="absolute top-2 left-2">
